@@ -1,0 +1,1066 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>K.R. Mangalam University CUET 2026 Result Calculator</title>
+
+  <style>
+    :root {
+      --bg1: #eef2f3;
+      --bg2: #dff3e3;
+      --card: #ffffff;
+      --shadow: 0 10px 30px rgba(0, 0, 0, .12);
+      --text: #0f172a;
+      --muted: #475569;
+      --brand1: #a30000;
+      --brand2: #1f1c18;
+      --primary: #28a745;
+      --primaryHover: #218838;
+      --primarySoft: #eef9ee;
+      --ok: #28a745;
+      --warn: #ff9800;
+      --warnSoft: #fff3cf;
+      --border: #e5e7eb;
+      --focus: rgba(40, 167, 69, .35);
+    }
+
+    * {
+      box-sizing: border-box;
+    }
+
+    body {
+      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+      padding: 16px;
+      margin: 0;
+      color: var(--text);
+      background: linear-gradient(135deg, var(--bg1), var(--bg2));
+      min-height: 100vh;
+    }
+
+    .container {
+      background: var(--card);
+      padding: 28px;
+      border-radius: 22px;
+      box-shadow: var(--shadow);
+      max-width: 900px;
+      margin: 24px auto;
+      border: 1px solid rgba(15, 23, 42, .08);
+    }
+
+    .header {
+      text-align: center;
+      padding: 22px;
+      border-radius: 14px;
+      margin-bottom: 18px;
+      background: linear-gradient(135deg, var(--brand1), var(--brand2));
+      color: white;
+    }
+
+    .header h1 {
+      margin: 0;
+      font-size: clamp(24px, 3.4vw, 38px);
+      letter-spacing: .2px;
+    }
+
+    .header p {
+      margin: 8px 0 0;
+      font-size: clamp(14px, 2.2vw, 18px);
+      opacity: .95;
+    }
+
+    .subtle {
+      text-align: center;
+      color: var(--muted);
+      margin: 8px 0 16px;
+      font-size: 14px;
+      line-height: 1.6;
+    }
+
+    .instructions {
+      margin: 0 auto 20px;
+      max-width: 820px;
+    }
+
+    .section-title {
+      font-size: 18px;
+      font-weight: 800;
+      margin-bottom: 12px;
+      color: var(--brand2);
+      text-align: left;
+    }
+
+    .info-card {
+      background: linear-gradient(180deg, #f8fafc, #ffffff);
+      border: 1px solid rgba(15, 23, 42, .08);
+      border-radius: 16px;
+      padding: 18px 20px;
+      box-shadow: 0 12px 28px rgba(15, 23, 42, .06);
+    }
+
+    .info-card p {
+      margin: 0 0 12px;
+      font-size: 15px;
+      color: var(--muted);
+      line-height: 1.7;
+    }
+
+    .info-card ul {
+      margin: 0;
+      padding-left: 20px;
+      color: var(--text);
+      font-size: 15px;
+      line-height: 1.7;
+    }
+
+    .info-card li {
+      margin-bottom: 8px;
+    }
+
+    table {
+      width: 100%;
+      border-collapse: collapse;
+      margin: 10px 0 16px;
+      overflow: hidden;
+      border-radius: 14px;
+      border: 1px solid var(--border);
+    }
+
+    th,
+    td {
+      border-bottom: 1px solid var(--border);
+      border-right: 1px solid var(--border);
+      text-align: center;
+      padding: 10px;
+    }
+
+    th:last-child,
+    td:last-child {
+      border-right: none;
+    }
+
+    tr:last-child td {
+      border-bottom: none;
+    }
+
+    th {
+      background: #dbe6f5;
+      color: #003366;
+      font-size: 16px;
+      font-weight: 700;
+    }
+
+    td input {
+      width: 100%;
+      max-width: 200px;
+      padding: 10px;
+      text-align: center;
+      border: 1px solid #cbd5e1;
+      border-radius: 10px;
+      font-size: 16px;
+      outline: none;
+      background: #f8fafc;
+      transition: border-color .15s ease, box-shadow .15s ease, background .15s ease;
+    }
+
+    td input:focus {
+      border-color: rgba(40, 167, 69, .8);
+      box-shadow: 0 0 0 4px var(--focus);
+      background: #fff;
+    }
+
+    .controls {
+      display: flex;
+      gap: 12px;
+      align-items: flex-end;
+      flex-wrap: wrap;
+      margin: 10px 0 6px;
+    }
+
+    .controls>div {
+      flex: 1 1 220px;
+      min-width: 170px;
+    }
+
+    select,
+    .btn {
+      border-radius: 12px;
+      font-size: 16px;
+      padding: 12px;
+    }
+
+    select {
+      width: 100%;
+      min-width: 220px;
+      border: 1px solid #cbd5e1;
+      background: #f8fafc;
+      outline: none;
+    }
+
+    select:focus {
+      border-color: rgba(40, 167, 69, .8);
+      box-shadow: 0 0 0 4px var(--focus);
+      background: #fff;
+    }
+
+    .btn {
+      width: 100%;
+      border: none;
+      cursor: pointer;
+      color: #fff;
+      background: var(--primary);
+      box-shadow: 0 6px 16px rgba(40, 167, 69, .25);
+      transition: transform .06s ease, background .15s ease, opacity .15s ease;
+      font-weight: 800;
+    }
+
+    .btn:hover {
+      background: var(--primaryHover);
+    }
+
+    .btn:active {
+      transform: translateY(1px);
+    }
+
+    .btn[disabled] {
+      opacity: .65;
+      cursor: not-allowed;
+      box-shadow: none;
+    }
+
+    .btn.secondary {
+      background: #0b5cab;
+      box-shadow: 0 6px 16px rgba(11, 92, 171, .22);
+    }
+
+    .btn.secondary:hover {
+      background: #094e91;
+    }
+
+    .legend {
+      margin-top: 16px;
+      text-align: center;
+      font-weight: 800;
+      color: var(--muted);
+      font-size: 14px;
+    }
+
+    .green-box {
+      display: inline-block;
+      background: #c8f7c5;
+      padding: 7px 14px;
+      border: 2px solid var(--ok);
+      border-radius: 999px;
+      margin: 6px 6px;
+      color: #0b5a23;
+    }
+
+    .yellow-box {
+      display: inline-block;
+      background: #ffe69c;
+      padding: 7px 14px;
+      border: 2px solid var(--warn);
+      border-radius: 999px;
+      margin: 6px 6px;
+      color: #7a4a00;
+    }
+
+    .result {
+      margin-top: 18px;
+      background: var(--primarySoft);
+      padding: 22px;
+      border-radius: 18px;
+      border: 1px solid #9bd0a5;
+      font-size: 16px;
+      font-weight: 600;
+      line-height: 1.6;
+      min-height: 90px;
+      word-break: break-word;
+      white-space: normal;
+      width: 100%;
+    }
+
+    .result strong,
+    .result b {
+      color: var(--brand2);
+      font-weight: 800;
+    }
+
+    .result-header {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 10px;
+      margin-bottom: 14px;
+      font-size: 18px;
+    }
+
+    .result-list {
+      display: grid;
+      gap: 12px;
+      margin: 0;
+      padding: 0;
+      list-style: none;
+    }
+
+    .result-item {
+      display: flex;
+      justify-content: space-between;
+      align-items: flex-start;
+      gap: 12px;
+      padding: 12px 14px;
+      border-radius: 14px;
+      background: rgba(255, 255, 255, .75);
+      border: 1px solid rgba(40, 167, 69, .16);
+      flex-wrap: wrap;
+    }
+
+    .result-item span {
+      display: inline-block;
+      max-width: calc(100% - 120px);
+      word-break: break-word;
+    }
+
+    .result-item strong {
+      min-width: 90px;
+      text-align: right;
+    }
+
+    .mobile-break {
+      display: inline;
+      white-space: nowrap;
+    }
+
+    .result-note {
+      margin-top: 14px;
+      color: var(--muted);
+      font-size: 14px;
+      text-align: center;
+    }
+
+    .result.warning {
+      background: #fff7ed;
+      border-color: #ffcc8a;
+    }
+
+    .hint {
+      display: flex;
+      gap: 10px;
+      flex-wrap: wrap;
+      justify-content: center;
+      color: var(--muted);
+      font-size: 13px;
+      margin-top: 10px;
+    }
+
+    .pill {
+      background: #f1f5f9;
+      border: 1px solid #e2e8f0;
+      padding: 7px 12px;
+      border-radius: 999px;
+    }
+
+    .highlight-marks {
+      background: #c8f7c5 !important;
+      border: 3px solid #28a745 !important;
+    }
+
+    .highlight-percentile {
+      background: #ffe69c !important;
+      border: 3px solid #ff9800 !important;
+    }
+
+    .sr-only {
+      position: absolute;
+      width: 1px;
+      height: 1px;
+      padding: 0;
+      margin: -1px;
+      overflow: hidden;
+      clip: rect(0, 0, 0, 0);
+      border: 0;
+    }
+
+    /* Responsive tweaks */
+    @media (max-width: 720px) {
+      .container {
+        padding: 18px;
+        margin: 12px auto;
+      }
+
+      th {
+        font-size: 14px;
+      }
+
+      td input {
+        font-size: 15px;
+        padding: 9px;
+        border-radius: 10px;
+      }
+
+      .controls .btn {
+        width: 100%;
+        min-width: unset;
+      }
+
+      .info-card {
+        padding: 16px;
+      }
+
+      .section-title {
+        font-size: 16px;
+      }
+
+      .modal {
+        width: 92%;
+      }
+    }
+
+    @media (max-width: 420px) {
+      td input {
+        font-size: 14px;
+        padding: 8px;
+      }
+
+      .result {
+        font-size: 16px;
+      }
+
+      .result-item {
+        flex-direction: column;
+        align-items: stretch;
+      }
+
+      .result-item strong {
+        text-align: left;
+        margin-top: 8px;
+      }
+
+      .mobile-break {
+        display: block;
+        margin-top: 4px;
+      }
+
+      .modal {
+        width: 90%;
+      }
+
+      .modal-actions {
+        flex-direction: column;
+      }
+
+      .modal-actions .btn {
+        width: 100%;
+      }
+    }
+
+    @media print {
+      body {
+        background: #fff;
+        color: #111;
+        margin: 0;
+        padding: 0;
+        font-size: 12px;
+        line-height: 1.2;
+      }
+
+      .container {
+        box-shadow: none;
+        border: none;
+        background: #fff;
+        max-width: 100%;
+        width: 100%;
+        margin: 0;
+        padding: 8px;
+        page-break-inside: avoid;
+        break-inside: avoid;
+      }
+
+      .header {
+        padding: 16px 12px;
+        border-radius: 0;
+      }
+
+      .header h1 {
+        font-size: 18px;
+      }
+
+      .header p,
+      .subtle,
+      .section-title,
+      .info-card p,
+      .info-card li,
+      .result-note,
+      .modal p {
+        font-size: 11px;
+      }
+
+      .instructions,
+      .info-card,
+      .modal {
+        box-shadow: none;
+        border: none;
+        background: transparent;
+      }
+
+      .info-card {
+        padding: 0;
+        margin-bottom: 4px;
+      }
+
+      .controls,
+      .legend,
+      .hint,
+      .modal-backdrop,
+      .modal,
+      .btn,
+      .modal-close,
+      .modal-actions {
+        display: none !important;
+      }
+
+      .result {
+        min-height: auto;
+        padding: 12px;
+      }
+
+      th,
+      td {
+        padding: 6px 8px;
+      }
+
+      .result-item {
+        padding: 8px 10px;
+      }
+
+      table {
+        page-break-inside: avoid;
+        border-radius: 0;
+      }
+
+      .info-card ul {
+        padding-left: 16px;
+      }
+
+      * {
+        -webkit-print-color-adjust: exact;
+        color-adjust: exact;
+      }
+
+      @page {
+        size: A4 portrait;
+        margin: 8mm;
+      }
+
+      html,
+      body {
+        height: auto !important;
+      }
+    }
+
+    .modal-backdrop {
+      position: fixed;
+      inset: 0;
+      background: rgba(15, 23, 42, .7);
+      display: none;
+      align-items: center;
+      justify-content: center;
+      z-index: 20;
+      padding: 16px;
+    }
+
+    .modal-backdrop.active {
+      display: flex;
+    }
+
+    .modal {
+      background: #fff;
+      border-radius: 18px;
+      box-shadow: 0 20px 60px rgba(15, 23, 42, .25);
+      padding: 24px;
+      max-width: 400px;
+      width: 100%;
+      text-align: center;
+    }
+
+    .modal h2 {
+      margin: 0 0 12px;
+      font-size: 22px;
+    }
+
+    .modal p {
+      margin: 0 0 20px;
+      color: var(--muted);
+      font-size: 15px;
+    }
+
+    .modal-actions {
+      display: flex;
+      gap: 12px;
+      justify-content: center;
+      flex-wrap: wrap;
+      margin-bottom: 16px;
+    }
+
+    .modal-close {
+      width: 100%;
+    }
+  </style>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/html2canvas/1.4.1/html2canvas.min.js"
+    integrity="sha512-BNa5qRaN0P4b2uA6TGqUXPFSwHAt2rcP6VQ6Scx0LGXy7Z0pN37Iu3+D5siDVBEGJ8otfBxFhg9VZf7WzvP4cg=="
+    crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.5.1/jspdf.umd.min.js"
+    integrity="sha512-GnHbhCYdni+b3F52hP6ppM9Cdku+nbuD95+/I/J+9j7YQG8GMHgN4AnNtjB9PgeBwHy2JxrbkgS1sEy4P7CpCA=="
+    crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+</head>
+
+<body>
+  <div class="container">
+    <div class="header">
+      <h1>K.R. Mangalam University</h1>
+      <p>CUET 2026 Result Calculator</p>
+    </div>
+
+    <div class="subtle">Enter Marks (out of 250) and Percentile for each subject.</div>
+
+
+    <form id="cuetForm">
+      <table aria-label="CUET input table">
+        <thead>
+          <tr>
+            <th>Subject No</th>
+            <th>Percentile</th>
+            <th>Marks (Out of 250)</th>
+          </tr>
+        </thead>
+
+        <tbody>
+          <tr>
+            <td>1</td>
+            <td><input type="number" inputmode="decimal" id="percentile1" placeholder="e.g. 92" min="0" max="100"
+                step="0.01"></td>
+            <td><input type="number" inputmode="decimal" id="subject1" placeholder="e.g. 180" min="0" max="250"
+                step="0.01"></td>
+          </tr>
+          <tr>
+            <td>2</td>
+            <td><input type="number" inputmode="decimal" id="percentile2" placeholder="e.g. 88" min="0" max="100"
+                step="0.01"></td>
+            <td><input type="number" inputmode="decimal" id="subject2" placeholder="e.g. 160" min="0" max="250"
+                step="0.01"></td>
+          </tr>
+          <tr>
+            <td>3</td>
+            <td><input type="number" inputmode="decimal" id="percentile3" placeholder="e.g. 85" min="0" max="100"
+                step="0.01"></td>
+            <td><input type="number" inputmode="decimal" id="subject3" placeholder="e.g. 150" min="0" max="250"
+                step="0.01"></td>
+          </tr>
+          <tr>
+            <td>4</td>
+            <td><input type="number" inputmode="decimal" id="percentile4" placeholder="e.g. 90" min="0" max="100"
+                step="0.01"></td>
+            <td><input type="number" inputmode="decimal" id="subject4" placeholder="e.g. 170" min="0" max="250"
+                step="0.01"></td>
+          </tr>
+          <tr>
+            <td>5</td>
+            <td><input type="number" inputmode="decimal" id="percentile5" placeholder="e.g. 80" min="0" max="100"
+                step="0.01"></td>
+            <td><input type="number" inputmode="decimal" id="subject5" placeholder="e.g. 140" min="0" max="250"
+                step="0.01"></td>
+          </tr>
+        </tbody>
+      </table>
+
+      <div class="controls">
+        <div style="flex:1 1 260px; min-width:240px;">
+          <label for="bestCount">Select Best Subjects Count:</label>
+          <select id="bestCount">
+            <option value="3">Best 3 Subjects</option>
+            <option value="4" selected>Best 4 Subjects</option>
+          </select>
+        </div>
+
+        <div style="flex:1 1 200px; min-width:180px;">
+          <button class="btn" id="calculateBtn" type="submit">Calculate Result</button>
+        </div>
+
+        <div style="flex:1 1 200px; min-width:180px;">
+          <button class="btn secondary" id="refreshBtn" type="button">Refresh</button>
+        </div>
+
+        <div style="flex:1 1 220px; min-width:180px;">
+          <button class="btn secondary" id="exportBtn" type="button">Save / Print</button>
+        </div>
+      </div>
+
+      <div class="result" id="result">Enter your scores and click Calculate Result</div>
+    </form>
+
+    <div class="modal-backdrop" id="exportModal" aria-hidden="true">
+      <div class="modal" role="dialog" aria-modal="true" aria-labelledby="exportModalTitle">
+        <h2 id="exportModalTitle">Save or Print</h2>
+        <p>Select an action to save your result.</p>
+        <div class="modal-actions">
+          <button class="btn" id="modalSavePdfBtn" type="button">Save as PDF</button>
+          <button class="btn" id="modalSaveImageBtn" type="button">Save as Image</button>
+          <button class="btn secondary" id="modalPrintBtn" type="button">Print</button>
+        </div>
+        <button class="btn secondary modal-close" id="closeModalBtn" type="button">Close</button>
+      </div>
+    </div>
+  </div>
+
+  <script>
+    (function () {
+      const form = document.getElementById('cuetForm');
+      const calculateBtn = document.getElementById('calculateBtn');
+      const refreshBtn = document.getElementById('refreshBtn');
+      const resultEl = document.getElementById('result');
+      const bestCountEl = document.getElementById('bestCount');
+
+      function clearHighlights() {
+        for (let i = 1; i <= 5; i++) {
+          const marksEl = document.getElementById(`subject${i}`);
+          const percEl = document.getElementById(`percentile${i}`);
+          if (marksEl) marksEl.classList.remove('highlight-marks');
+          if (percEl) percEl.classList.remove('highlight-percentile');
+        }
+      }
+
+      function setResult(html, variant) {
+        resultEl.classList.remove('warning');
+        if (variant === 'warning') resultEl.classList.add('warning');
+        resultEl.innerHTML = html;
+      }
+
+      function setLoading(isLoading) {
+        calculateBtn.disabled = isLoading;
+        refreshBtn.disabled = isLoading;
+        if (isLoading) {
+          setResult('⏳ Calculating…', undefined);
+        }
+      }
+
+      function getScholarshipByPercentage(percentage) {
+        if (percentage >= 90) return 100;
+        if (percentage >= 75) return 50;
+        if (percentage >= 60) return 35;
+        if (percentage >= 50) return 25;
+        if (percentage >= 45) return 10;
+        return 0;
+      }
+
+      function getScholarshipByPercentile(percentile) {
+        if (percentile >= 95) return 100;
+        if (percentile >= 85) return 35;
+        if (percentile >= 70) return 25;
+        if (percentile >= 50) return 10;
+        return 0;
+      }
+
+      function getScholarshipForThreePapers(percentage) {
+        return percentage >= 40 ? 10 : 0;
+      }
+
+      function calculateCUET() {
+        clearHighlights();
+
+        const subjects = [];
+        for (let i = 1; i <= 5; i++) {
+          const marks = parseFloat(document.getElementById(`subject${i}`).value);
+          const percentile = parseFloat(document.getElementById(`percentile${i}`).value);
+
+          if (!isNaN(marks) && !isNaN(percentile)) {
+            subjects.push({ id: i, marks, percentile });
+          }
+        }
+
+        const attemptedCount = subjects.length;
+        if (attemptedCount < 3) {
+          setResult('⚠ Please enter Marks and Percentile for at least 3 subjects to calculate scholarship.', 'warning');
+          return;
+        }
+
+        const effectiveBestCount = attemptedCount >= 4 ? 4 : 3;
+        const bestMarksSubjects = [...subjects].sort((a, b) => b.marks - a.marks).slice(0, effectiveBestCount);
+        const bestPercentileSubjects = [...subjects].sort((a, b) => b.percentile - a.percentile).slice(0, effectiveBestCount);
+
+        bestMarksSubjects.forEach(s => {
+          document.getElementById(`subject${s.id}`).classList.add('highlight-marks');
+        });
+
+        bestPercentileSubjects.forEach(s => {
+          document.getElementById(`percentile${s.id}`).classList.add('highlight-percentile');
+        });
+
+        const totalMarks = bestMarksSubjects.reduce((sum, s) => sum + s.marks, 0);
+        const totalMaxMarks = effectiveBestCount * 250;
+        const percentage = (totalMarks / totalMaxMarks) * 100;
+        const avgPercentile = bestPercentileSubjects.reduce((sum, s) => sum + s.percentile, 0) / effectiveBestCount;
+
+        let scholarshipHtml;
+        let noteText;
+        if (attemptedCount >= 4) {
+          const percentageScholarship = getScholarshipByPercentage(percentage);
+          const percentileScholarship = getScholarshipByPercentile(avgPercentile);
+          scholarshipHtml =
+            `<li class="result-item"><span>Scholarship via CUET-1<span class="mobile-break"> (Best 4 %)</span></span><strong>${percentageScholarship}%</strong></li>` +
+            `<li class="result-item"><span>Scholarship via CUET-2<span class="mobile-break"> (Best 4 percentile)</span></span><strong>${percentileScholarship}%</strong></li>`;
+          noteText = '4 or more papers attempted: CUET-1 and CUET-2 scholarship criteria apply.';
+        } else {
+          const threePaperScholarship = getScholarshipForThreePapers(percentage);
+          scholarshipHtml = `<li class="result-item"><span>Scholarship for 3 papers (>= 40%)</span><strong>${threePaperScholarship}%</strong></li>`;
+          noteText = '3 papers attempted: 10% scholarship applies if percentage is 40% or above.';
+        }
+
+        setResult(
+          `<div class="result-header">🎓 <strong>CUET Scholarship Result</strong></div>` +
+          `<ul class="result-list">` +
+          `<li class="result-item"><span>Best ${effectiveBestCount} Marks</span><strong>${totalMarks.toFixed(2)} / ${totalMaxMarks}</strong></li>` +
+          `<li class="result-item"><span>Percentage</span><strong>${percentage.toFixed(2)}%</strong></li>` +
+          `<li class="result-item"><span>Average Percentile</span><strong>${avgPercentile.toFixed(2)}%</strong></li>` +
+          scholarshipHtml +
+          `</ul>` +
+          `<div class="result-note">${noteText}</div>`
+        );
+      }
+
+      function refresh() {
+        clearHighlights();
+        for (let i = 1; i <= 5; i++) {
+          const marksEl = document.getElementById(`subject${i}`);
+          const percEl = document.getElementById(`percentile${i}`);
+          if (marksEl) marksEl.value = '';
+          if (percEl) percEl.value = '';
+        }
+        setResult('Enter your scores and click Calculate Result');
+      }
+
+      // Turn off form refresh: handle submit + prevent default.
+      form.addEventListener('submit', function (e) {
+        e.preventDefault();
+        setLoading(true);
+        try {
+          calculateCUET();
+        } finally {
+          setLoading(false);
+        }
+      });
+
+      const exportBtn = document.getElementById('exportBtn');
+      const modal = document.getElementById('exportModal');
+      const modalSavePdfBtn = document.getElementById('modalSavePdfBtn');
+      const modalSaveImageBtn = document.getElementById('modalSaveImageBtn');
+      const modalPrintBtn = document.getElementById('modalPrintBtn');
+      const closeModalBtn = document.getElementById('closeModalBtn');
+      const pageWrapper = document.querySelector('.container');
+
+      function loadHtml2Canvas() {
+        return new Promise((resolve, reject) => {
+          if (window.html2canvas) {
+            return resolve(window.html2canvas);
+          }
+
+          const script = document.createElement('script');
+          script.src = 'https://cdnjs.cloudflare.com/ajax/libs/html2canvas/1.4.1/html2canvas.min.js';
+          script.onload = () => resolve(window.html2canvas);
+          script.onerror = () => reject(new Error('Unable to load html2canvas'));
+          document.head.appendChild(script);
+        });
+      }
+
+      async function saveAsImage() {
+        try {
+          modalSaveImageBtn.disabled = true;
+          modalSaveImageBtn.textContent = 'Saving…';
+
+          if (typeof html2canvas === 'undefined') {
+            await loadHtml2Canvas();
+          }
+
+          const clone = pageWrapper.cloneNode(true);
+          clone.style.position = 'fixed';
+          clone.style.left = '-9999px';
+          clone.style.top = '0';
+          clone.style.width = '760px';
+          clone.style.minWidth = '760px';
+          clone.style.maxWidth = '760px';
+          clone.style.padding = '24px';
+          clone.style.boxShadow = 'none';
+          clone.style.background = '#ffffff';
+          clone.style.zIndex = '9999';
+          const controlsEl = clone.querySelector('.controls');
+          if (controlsEl) controlsEl.style.display = 'none';
+          document.body.appendChild(clone);
+
+          const canvas = await html2canvas(clone, {
+            scale: 2,
+            backgroundColor: '#ffffff',
+            useCORS: false,
+            logging: false,
+          });
+
+          document.body.removeChild(clone);
+
+          if (canvas.toBlob) {
+            canvas.toBlob(function (blob) {
+              const url = URL.createObjectURL(blob);
+              const link = document.createElement('a');
+              link.href = url;
+              link.download = 'cuet-result.png';
+              document.body.appendChild(link);
+              link.click();
+              document.body.removeChild(link);
+              URL.revokeObjectURL(url);
+            }, 'image/png');
+          } else {
+            const link = document.createElement('a');
+            link.href = canvas.toDataURL('image/png');
+            link.download = 'cuet-result.png';
+            document.body.appendChild(link);
+            link.click();
+            document.body.removeChild(link);
+          }
+        } catch (err) {
+          alert('Unable to save image. Please try again.');
+          console.error(err);
+        } finally {
+          modalSaveImageBtn.disabled = false;
+          modalSaveImageBtn.textContent = 'Save as Image';
+        }
+      }
+
+      function loadJsPDF() {
+        return new Promise((resolve, reject) => {
+          if (window.jspdf && (window.jspdf.jsPDF || window.jspdf.default || typeof window.jspdf === 'function')) {
+            return resolve(window.jspdf);
+          }
+
+          const script = document.createElement('script');
+          script.src = 'https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.5.1/jspdf.umd.min.js';
+          script.onload = () => resolve(window.jspdf);
+          script.onerror = () => reject(new Error('Unable to load jsPDF'));
+          document.head.appendChild(script);
+        });
+      }
+
+      async function saveAsPDF() {
+        try {
+          modalPrintBtn.disabled = true;
+          modalPrintBtn.textContent = 'Saving…';
+
+          if (typeof html2canvas === 'undefined') {
+            await loadHtml2Canvas();
+          }
+          if (!window.jspdf) {
+            await loadJsPDF();
+          }
+
+          const clone = pageWrapper.cloneNode(true);
+          clone.style.position = 'fixed';
+          clone.style.left = '-9999px';
+          clone.style.top = '0';
+          clone.style.width = '760px';
+          clone.style.minWidth = '760px';
+          clone.style.maxWidth = '760px';
+          clone.style.padding = '24px';
+          clone.style.boxShadow = 'none';
+          clone.style.background = '#ffffff';
+          clone.style.zIndex = '9999';
+          const controlsEl = clone.querySelector('.controls');
+          if (controlsEl) controlsEl.style.display = 'none';
+          document.body.appendChild(clone);
+
+          const canvas = await html2canvas(clone, {
+            scale: 2,
+            backgroundColor: '#ffffff',
+            useCORS: false,
+            logging: false,
+          });
+
+          document.body.removeChild(clone);
+
+          const pdfModule = window.jspdf || {};
+          let jsPDF = pdfModule.jsPDF || pdfModule.default || window.jsPDF || pdfModule;
+          if (typeof jsPDF !== 'function' && jsPDF && jsPDF.default) {
+            jsPDF = jsPDF.default;
+          }
+          if (!jsPDF || typeof jsPDF !== 'function') {
+            throw new Error('jsPDF not loaded');
+          }
+
+          const pdf = new jsPDF({ unit: 'px', format: 'a4', orientation: 'portrait' });
+          const imgData = canvas.toDataURL('image/png');
+          const pdfWidth = pdf.internal.pageSize.getWidth();
+          const pdfHeight = pdf.internal.pageSize.getHeight();
+          const imgProps = { width: canvas.width, height: canvas.height };
+          const ratio = Math.min(pdfWidth / imgProps.width, pdfHeight / imgProps.height);
+          const imgWidth = imgProps.width * ratio;
+          const imgHeight = imgProps.height * ratio;
+          pdf.addImage(imgData, 'PNG', 0, 0, imgWidth, imgHeight);
+          pdf.save('cuet-result.pdf');
+        } catch (err) {
+          console.error(err);
+          alert('PDF export failed. The browser print dialog can still save this page as PDF.');
+          window.print();
+        } finally {
+          modalSavePdfBtn.disabled = false;
+          modalSavePdfBtn.textContent = 'Save as PDF';
+        }
+      }
+
+      function printPage() {
+        closeModal();
+        window.print();
+      }
+
+      function openModal() {
+        modal.classList.add('active');
+        modal.setAttribute('aria-hidden', 'false');
+      }
+
+      function closeModal() {
+        modal.classList.remove('active');
+        modal.setAttribute('aria-hidden', 'true');
+      }
+
+      // Refresh button
+      refreshBtn.addEventListener('click', function () {
+        refresh();
+      });
+
+      exportBtn.addEventListener('click', function () {
+        openModal();
+      });
+
+      modalSavePdfBtn.addEventListener('click', function () {
+        saveAsPDF();
+      });
+
+      modalSaveImageBtn.addEventListener('click', function () {
+        saveAsImage();
+      });
+
+      modalPrintBtn.addEventListener('click', function () {
+        printPage();
+      });
+
+      closeModalBtn.addEventListener('click', function () {
+        closeModal();
+      });
+
+      modal.addEventListener('click', function (evt) {
+        if (evt.target === modal) {
+          closeModal();
+        }
+      });
+
+      // Allow Enter key to work without refresh; handled by submit listener.
+    })();
+  </script>
+</body>
+
+</html>
